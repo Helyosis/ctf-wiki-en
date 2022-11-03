@@ -25,7 +25,7 @@ In addition, there are several requirements for using socket pivoting.
 - You can control the sp pointer. In general, the control stack pointer will use ROP, and the common control stack pointers are usually gadgets.
 
 
-`` `asm
+```asm
 pop rsp/esp
 
 ```
@@ -35,7 +35,7 @@ pop rsp/esp
 Of course, there will be some other postures. For example, gadgets in libc_csu_init, we can get the control rsp pointer by offset. The above is normal, the bottom is offset.
 
 
-`` `asm
+```asm
 gef➤  x/7i 0x000000000040061a
 
 0x40061a <__libc_csu_init+90>:	pop    rbx
@@ -197,7 +197,7 @@ Then the last part of our payload changes how to set esp, you can know
 So the last step we need to execute is
 
 
-`` `asm
+```asm
 sub esp,0x28
 
 jmp esp
